@@ -88,7 +88,12 @@ def main() -> None:
         raise SystemExit("no prompts fitted")
     mean = acc / len(texts)
     atomic_torch_save(
-        {"rlens_readout": mean[:, :, : len(readout_ids)], "swap_nog": mean[:, :, len(readout_ids) :]},
+        {
+            "rlens_readout": mean[: len(readout_ids)],
+            "swap_nog": mean[len(readout_ids) :],
+            "readout_ids": readout_ids,
+            "swap_ids": swap_ids,
+        },
         out / "restricted_rows.pt",
     )
     print(f"wrote {out / 'restricted_rows.pt'}")
