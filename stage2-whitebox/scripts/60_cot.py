@@ -78,6 +78,8 @@ def main() -> None:
             text = model.tok.decode(generated)
             record = {
                 "item_id": item.item_id,
+                "k": int(item.k),
+                "answer": int(item.answer),
                 "text": text,
                 "ids": generated,
                 "finish_reason": "eos" if generated[-1] == model.tok.eos_token_id else "length",

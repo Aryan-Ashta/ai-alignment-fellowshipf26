@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.analysis.bootstrap import accuracy_table  # noqa: E402
+from s2.analysis.cot_table import cot_accuracy  # noqa: E402
 from s2.analysis.curves import mean_curve  # noqa: E402
 from s2.analysis.depth import Thresholds  # noqa: E402
 from s2.analysis.plots import plot_depth  # noqa: E402
@@ -33,6 +34,12 @@ def main() -> None:
                 path = root / f"{name}.parquet"
                 if path.is_file():
                     mean_curve(pd.read_parquet(path), out / f"{name}_{family}.{slot}.csv")
+                    wrote_accuracy = True
+            cot = root / "cot" / "cot.jsonl"
+            if cot.is_file() and cot.stat().st_size:
+                records = pd.read_json(cot, lines=True)
+                if {"k", "answer", "parsed"} <= set(records.columns):
+                    cot_accuracy(records, out / f"cot_{family}.{slot}.csv")
                     wrote_accuracy = True
     prereg = ROOT / "prereg" / "thresholds.yaml"
     if not prereg.is_file():
