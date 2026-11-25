@@ -50,3 +50,17 @@
 - Passed: torch 30.05 / 29.31 TFLOPS, MLX 30.54 / 31.01 TFLOPS (ratios 1.02 and 1.06). Forward+backward 2.00 s.
 - Failed: nothing.
 - Decided: MLX is not ≥ 2× on matmul, and the plan already keeps the fitter on torch-MPS. MLX stays the CoT-generation backend only. No MLX fitter port.
+
+### P1 task generator
+
+- Did: generated dev/pilot/main × nested/word, 50/200/300 per k. `TEMPLATE_NUMBERS` from the DPO chat template is `{2, 4}` (`2024` splits into `2` + `202` + `4`). `mul_symbol` is `×`.
+- Passed: 6600 rows, 6600 unique format-independent keys, 0 constraint violations, 0 misaligned variant prompts, k=1 has no variants. Counts match. Unit tests pass.
+- Failed: balance gate is non-blocking and fails for most k≥5 cells, and for k=1 main (`*` share 0.03 nested / 0.00 word). k=1 has only ~9800 legal chains; dev and pilot take the scarce `*` chains first, so main is the remainder. Higher k under-represents `*` because a `*` step also crowds a decile, and the max-deviation greedy will not take it.
+- Decided: keep the specified generation order and report the gate. Null variants after 200 resamples: 1384/16500 patch sources, 396 controls, 187 swaps. Items are kept.
+
+### P3.1 LRP mode
+
+- Did: `src/s2/lrp.py`. Olmo3 copies jpp rlens (LN outside `self_attn`, identity+half on `Olmo3MLP`). Llama uses the same walker on Llama classes, with the stock weight-after-cast norm.
+- Passed: `tests/test_lrp.py`. Logits with LRP on vs off are bitwise equal on tiny Olmo3 and Llama. Olmo3 input-gradients match `apply_lrp_rules_for_mode(..., "rlens")` with relative error < 1e-6. Patch names match, and `q_norm`/`k_norm` are not patched.
+- Failed: a direct `z * sigmoid(z)` rewrite differed from `F.silu` by ~1e-7. The identity rule now returns `F.silu` in the forward and the detached-sigmoid gradient in the backward, so both gates hold.
+- Decided: that forward correction is required by the bit-identity gate and does not drop the jpp gradient match.

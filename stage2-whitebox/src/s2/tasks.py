@@ -144,22 +144,25 @@ def draw_pool(
     template_numbers: set[int],
     banned_keys: set[tuple],
 ) -> list[Chain]:
+    """Draw up to ``count`` unique chains. Stops early if the space is exhausted."""
     pool: list[Chain] = []
     seen: set[tuple] = set()
     attempts = 0
-    limit = count * 200
-    while len(pool) < count and attempts < limit:
+    stall = 0
+    limit = max(count * 40, 100_000)
+    while len(pool) < count and attempts < limit and stall < 20_000:
         attempts += 1
         chain = _sample_chain(rng, k, template_numbers)
         if chain is None:
+            stall += 1
             continue
         key = chain.key()
         if key in banned_keys or key in seen:
+            stall += 1
             continue
+        stall = 0
         seen.add(key)
         pool.append(chain)
-    if len(pool) < count:
-        raise RuntimeError(f"only drew {len(pool)}/{count} chains for k={k}")
     return pool
 
 
@@ -425,6 +428,10 @@ def generate_items(template_numbers: set[int], tok, mul_symbol: str = MUL_SYMBOL
                 need = counts[split]
                 rng = np.random.default_rng(seed * 1000 + k)
                 pool = draw_pool(rng, k, 50 * need, template_numbers, banned)
+                if len(pool) < need:
+                    raise RuntimeError(f"{split} {fmt} k={k}: pool {len(pool)} < needed {need}")
+                if len(pool) < 50 * need:
+                    print(f"{split} {fmt} k={k}: pool {len(pool)} < 50x {need}", flush=True)
                 chosen = select_balanced(pool, need)
                 for chain in chosen:
                     banned.add(chain.key())
