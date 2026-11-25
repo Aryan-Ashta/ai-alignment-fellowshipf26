@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.pilot import missing_steps  # noqa: E402
+from s2.pilot_report import write_report  # noqa: E402
 from s2.runio import require_ac_power  # noqa: E402
 
 PILOT = ("olmo3_7b.base", "olmo3_7b.step_1375", "olmo3_7b.dpo")
@@ -28,7 +29,12 @@ def main() -> None:
         raise SystemExit("AC check passed; launch the per-checkpoint scripts, do not bypass their own AC checks")
     missing = {key: missing_steps(ROOT, key) for key in PILOT}
     for key, steps in missing.items():
-        print(f"{key}: {', '.join(steps) if steps else 'complete'}")
+        if steps:
+            print(f"{key}: {', '.join(steps)}")
+        else:
+            path = ROOT / "results" / key / "PILOT_REPORT.md"
+            write_report(ROOT, key, path)
+            print(f"{key}: wrote {path}; stop for threshold approval")
     if any(missing.values()):
         raise SystemExit(2)
 
