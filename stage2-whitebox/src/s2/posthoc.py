@@ -15,3 +15,11 @@ def lead_time(ranks: list[int], first_write: int | None, rank_max: int) -> int |
         if rank <= rank_max:
             return first_write - index
     return None
+
+
+def first_write(token_ids: list[int], number_id: int) -> int | None:
+    """Index of the first generated token equal to ``number_id``, or None."""
+    try:
+        return token_ids.index(number_id)
+    except ValueError:
+        return None

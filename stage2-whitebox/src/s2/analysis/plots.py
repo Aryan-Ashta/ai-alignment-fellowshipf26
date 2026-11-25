@@ -27,3 +27,17 @@ def plot_depth(csv_path: Path, out: Path) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out)
     plt.close(fig)
+
+
+def plot_swap(csv_path: Path, out: Path) -> None:
+    table = pd.read_csv(csv_path)
+    fig, ax = plt.subplots(figsize=(6, 4))
+    for variant, block in table.groupby("variant"):
+        ax.plot(block["layer"], block["success"], label=str(variant))
+    ax.set_xlabel("layer")
+    ax.set_ylabel("swap success")
+    ax.legend()
+    fig.tight_layout()
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out)
+    plt.close(fig)
