@@ -128,6 +128,12 @@ def accumulate_expert_rows(position_rows: torch.Tensor, assignments: torch.Tenso
     return expert_sum, expert_count
 
 
+def prompts_converged(rows_small: torch.Tensor, rows_large: torch.Tensor, min_cosine: float = 0.99) -> bool:
+    """True when every readout row from the smaller prompt set matches the larger one."""
+    cos = torch.nn.functional.cosine_similarity(rows_small.float(), rows_large.float(), dim=-1)
+    return bool((cos >= min_cosine).all())
+
+
 def readout_cotangents(lm_head_weight: torch.Tensor, norm_weight: torch.Tensor, token_ids: list[int], *, include_gain: bool) -> torch.Tensor:
     rows = lm_head_weight[token_ids].float()
     if include_gain:

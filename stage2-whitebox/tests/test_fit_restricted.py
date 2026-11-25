@@ -122,3 +122,11 @@ def test_expert_accumulation_splits_positions():
     experts, pooled, fallback = finalize_experts(expert_sum, expert_count, min_count=2)
     assert bool(fallback[1]) and not bool(fallback[0])
     assert torch.allclose(experts[1], pooled)
+
+
+def test_prompt_convergence_is_row_cosine():
+    from s2.fit_restricted import prompts_converged
+
+    base = torch.tensor([[1.0, 0.0], [0.0, 1.0]])
+    assert prompts_converged(base, base * 2)
+    assert not prompts_converged(base, torch.tensor([[0.0, 1.0], [1.0, 0.0]]))
