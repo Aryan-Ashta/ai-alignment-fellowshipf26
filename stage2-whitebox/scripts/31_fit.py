@@ -18,23 +18,14 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from s2.corpus import wikitext_long  # noqa: E402
 from s2.fit_restricted import readout_cotangents, restricted_rows  # noqa: E402
 from s2.models import load  # noqa: E402
 from s2.runio import atomic_torch_save, code_commit, require_ac_power  # noqa: E402
 
 
 def corpus(n: int) -> list[str]:
-    from datasets import load_dataset
-
-    texts = []
-    for row in load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="train", streaming=True):
-        text = row["text"].strip()
-        if len(text) < 600:
-            continue
-        texts.append(text)
-        if len(texts) == n:
-            return texts
-    raise SystemExit(f"WikiText yielded {len(texts)} long records, need {n}")
+    return wikitext_long(n)
 
 
 def main() -> None:
