@@ -12,14 +12,15 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+import numpy as np
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.codi import build_merged, codi_latent_run  # noqa: E402
-from s2.codi_items import gate4_items  # noqa: E402
-from s2.gate4 import readability_passes  # noqa: E402
+from s2.codi_items import gate4_items, source_item  # noqa: E402
+from s2.gate4 import patching_passes, readability_passes  # noqa: E402
 from s2.runio import require_ac_power  # noqa: E402
 
 
@@ -70,6 +71,36 @@ def main() -> None:
     if not readability_passes(s1_hit / n, s2_hit / n, modal_s1, modal_s2):
         raise SystemExit("CODI Gate 4 readability failed")
     print("readability pass")
+    # Hidden index 0 is the prompt. Latent step k is hidden index k+1.
+    step = modal_s1 - 1
+    if step < 0:
+        raise SystemExit("s1 modal position is the prompt token, not a latent")
+    rng = np.random.default_rng(4)
+    source_hits = control_flips = tried = 0
+    for item in correct:
+        source = source_item(item, b=int(item["s1"]) % 9 + 1, rng=rng)
+        if source is None or source["answer"] == item["answer"]:
+            continue
+        donor = codi_latent_run(model, projector, tok, source["prompt"])
+        latent = donor["latent_inputs"][step]
+        patched = codi_latent_run(model, projector, tok, item["prompt"], patch={step: latent})
+        control_step = 0 if step != 0 else 1
+        control = codi_latent_run(
+            model, projector, tok, item["prompt"], patch={control_step: donor["latent_inputs"][control_step]}
+        )
+        tried += 1
+        if str(source["answer"]) in patched["answer_text"].split():
+            source_hits += 1
+        if str(item["answer"]) not in control["answer_text"].split():
+            control_flips += 1
+    if tried == 0:
+        raise SystemExit("no patch pairs")
+    source_rate = source_hits / tried
+    control_rate = control_flips / tried
+    report.write_text(report.read_text() + f"patch source {source_rate:.3f}\npatch control {control_rate:.3f}\ntried {tried}\n")
+    print(f"patch source {source_rate:.3f} control {control_rate:.3f} n={tried}")
+    if not patching_passes(source_rate, control_rate):
+        raise SystemExit("CODI Gate 4 patching failed")
 
 
 if __name__ == "__main__":
