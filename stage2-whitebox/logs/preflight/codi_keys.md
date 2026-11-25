@@ -1,0 +1,381 @@
+# CODI state-dict keys
+
+377 tensors.
+
+- `codi.base_model.model.lm_head.weight` (128259, 2048) torch.bfloat16
+- `codi.base_model.model.model.embed_tokens.weight` (128259, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.1.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.10.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.12.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.13.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.14.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.15.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.2.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.4.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.5.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.6.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.7.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.8.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.input_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.down_proj.base_layer.weight` (2048, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.down_proj.lora_A.default.weight` (128, 8192) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.down_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.gate_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.gate_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.gate_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.up_proj.base_layer.weight` (8192, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.up_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.mlp.up_proj.lora_B.default.weight` (8192, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.post_attention_layernorm.weight` (2048,) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.k_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.k_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.k_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.o_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.o_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.o_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.q_proj.base_layer.weight` (2048, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.q_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight` (2048, 128) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.v_proj.base_layer.weight` (512, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight` (128, 2048) torch.bfloat16
+- `codi.base_model.model.model.layers.9.self_attn.v_proj.lora_B.default.weight` (512, 128) torch.bfloat16
+- `codi.base_model.model.model.norm.weight` (2048,) torch.bfloat16
+- `prj.1.bias` (2048,) torch.bfloat16
+- `prj.1.weight` (2048, 2048) torch.bfloat16
+- `prj.3.bias` (2048,) torch.bfloat16
+- `prj.3.weight` (2048, 2048) torch.bfloat16
+- `prj.ln.bias` (2048,) torch.bfloat16
+- `prj.ln.weight` (2048,) torch.bfloat16

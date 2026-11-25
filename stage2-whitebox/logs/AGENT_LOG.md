@@ -85,3 +85,10 @@
 - Passed: `</think>` 0.62, `</think>\n` 0.72, `</think>\n\n` 1.00. Chose the shortest candidate at ≥ 90%, which is `</think>\n\n`. Frozen in `configs/tasks.yaml`.
 - Failed: nothing.
 - Decided: that string is the prefill for every checkpoint. The pilot still reports the per-checkpoint first-token-is-number rate.
+
+### P2.3 CODI loader
+
+- Did: merged `pytorch_model.bin` LoRA by hand (scale 32/128) onto a Llama built from the unsloth config, tokenizer from the CODI checkpoint. No peft. Base weights were in the bin, so no Meta licence was needed.
+- Passed: reference subtraction prompt `X=3, Y=2, Z=4` answered `5` (token id 20, then EOS). Merged model saved to `scratch/codi_merged/` (gitignored).
+- Failed: nothing. The first run stopped on `training_args.bin` being a second `.bin`; the loader now reads `pytorch_model.bin` only.
+- Decided: unsloth supplies config and tokenizer shape only. Greedy decode slices logits to `vocab_size - 1`, matching the reference.
