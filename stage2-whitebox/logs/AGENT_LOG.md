@@ -15,3 +15,10 @@
 - Passed: all three clones detached at the pinned SHAs; working trees clean.
 - Failed: nothing.
 - Decided: clones stay gitignored; only the pin file and script are committed.
+
+### P0.3 Python env
+
+- Did: wrote `pyproject.toml` (`requires-python ==3.12.*`) matching jpp_lens pins, plus `torch==2.13.0` from default PyPI. `uv lock` resolved the unpinned directs; those versions were written back as `==` and the lock regenerated. `jpp-lens` is a non-editable path source. anthropics `jlens` is not installed (module name collides with jpp's vendored `jlens`). No scikit-learn, no peft. `HF_HOME` left at the default.
+- Passed: `uv sync` installed 76 packages. `torch 2.13.0`, `torch.backends.mps.is_available()` is True, `transformers 5.14.1`, `import s2` and `import workspace_lens` succeed. mlx-lm resolved to 0.32.2 (≥ 0.28.2).
+- Failed: nothing.
+- Decided: torch 2.13.0 was installable, so no fallback. accelerate resolved to 1.16.0 (jpp's extra pins 1.12.0; we keep the PyPI resolution next to the MPS wheel). Cloud cu128 index is deferred to P10 so the default source stays PyPI and MPS is not replaced by a CPU wheel.

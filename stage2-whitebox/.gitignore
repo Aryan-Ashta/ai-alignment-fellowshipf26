@@ -6,3 +6,4 @@ third_party/
 lenses/**/*.safetensors
 results/**/raw/
 __pycache__/
+*.egg-info/
