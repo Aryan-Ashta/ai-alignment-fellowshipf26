@@ -22,3 +22,10 @@
 - Passed: `uv sync` installed 76 packages. `torch 2.13.0`, `torch.backends.mps.is_available()` is True, `transformers 5.14.1`, `import s2` and `import workspace_lens` succeed. mlx-lm resolved to 0.32.2 (≥ 0.28.2).
 - Failed: nothing.
 - Decided: torch 2.13.0 was installable, so no fallback. accelerate resolved to 1.16.0 (jpp's extra pins 1.12.0; we keep the PyPI resolution next to the MPS wheel). Cloud cu128 index is deferred to P10 so the default source stays PyPI and MPS is not replaced by a CPU wheel.
+
+### P0.4 checkpoint resolution
+
+- Did: `scripts/00_resolve_checkpoints.py` resolved every SPEC §2.4 default plus CODI and `unsloth/Llama-3.2-1B-Instruct` via `HfApi.list_repo_refs` and `model_info(files_metadata=True)`. Wrote `configs/models.yaml` and `logs/preflight/checkpoint_identity.md`.
+- Passed: live SHAs match the 2026-11-25 facts. 7B `main` weight sha256s differ from `step_1375`. 32B `Olmo-3.1@step_0750` ≡ `Olmo-3@step_750`. 32B `Olmo-3.1@main` ≡ `step_2300`. `codi_base` `model.safetensors` is 2471645608 bytes at `5a8abab4a5d6f164389b1079fb721cfab8d7126c`. `tests/test_runio.py` 4 passed. `tests/test_checkpoints.py` asserts revisions are 40-hex SHAs and no `from_pretrained` call passes a branch literal.
+- Failed: nothing.
+- Decided: 7B final `rl_step` is 1375 with `label: main` (bytes differ from `step_1375`). 32B final `rl_step` is 2300 with `label: main` because that revision is byte-identical to `step_2300`. `shard_sha256` stores file, sha256, and size so both safetensors and bin shards stay auditable.
