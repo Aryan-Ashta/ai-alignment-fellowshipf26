@@ -106,3 +106,10 @@
 - Passed: `configs/gen.yaml: astra_instruction` is null, so the arm skipped.
 - Failed: nothing.
 - Decided: do not invent Sunny's CoT-Control wording. The arm stays skipped until that string is supplied.
+
+### Battery block
+
+- Did: wrote the fit, readout, no-CoT, swap, and patching scripts.
+- Passed: each calls `require_ac_power()` before loading a model. On battery they raise `Long job refused: not on AC power` and do not start.
+- Failed: the laptop is on battery, so the 7B fit, pilot, and CODI Gate 4 have not run.
+- Decided: do not bypass the AC check. Plug in, then `caffeinate -dimsu uv run python scripts/31_fit.py --model olmo3_7b --ckpt dpo`, then readout, nocot, swap, and patch.
