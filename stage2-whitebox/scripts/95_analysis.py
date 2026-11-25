@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.analysis.bootstrap import accuracy_table  # noqa: E402
+from s2.analysis.curves import mean_curve  # noqa: E402
 from s2.analysis.depth import Thresholds  # noqa: E402
 from s2.analysis.plots import plot_depth  # noqa: E402
 from s2.analysis.tables import depth_table  # noqa: E402
@@ -27,6 +28,12 @@ def main() -> None:
             if nocot.is_file():
                 accuracy_table(pd.read_parquet(nocot), out / f"accuracy_{family}.{slot}.csv")
                 wrote_accuracy = True
+            root = ROOT / "results" / f"{family}.{slot}"
+            for name in ("swaps", "patch"):
+                path = root / f"{name}.parquet"
+                if path.is_file():
+                    mean_curve(pd.read_parquet(path), out / f"{name}_{family}.{slot}.csv")
+                    wrote_accuracy = True
     prereg = ROOT / "prereg" / "thresholds.yaml"
     if not prereg.is_file():
         if wrote_accuracy:

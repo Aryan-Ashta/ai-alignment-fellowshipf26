@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from s2.codi import build_merged, codi_latent_run  # noqa: E402
 from s2.codi_items import gate4_items  # noqa: E402
+from s2.gate4 import readability_passes  # noqa: E402
 from s2.runio import require_ac_power  # noqa: E402
 
 
@@ -66,7 +67,7 @@ def main() -> None:
     report.write_text(
         f"correct {n}\ns1 rate {s1_hit / n:.3f}\ns2 rate {s2_hit / n:.3f}\nmodal s1 {modal_s1}\nmodal s2 {modal_s2}\n"
     )
-    if s1_hit / n < 0.60 or s2_hit / n < 0.60 or modal_s1 is None or modal_s2 is None or modal_s1 >= modal_s2:
+    if not readability_passes(s1_hit / n, s2_hit / n, modal_s1, modal_s2):
         raise SystemExit("CODI Gate 4 readability failed")
     print("readability pass")
 
