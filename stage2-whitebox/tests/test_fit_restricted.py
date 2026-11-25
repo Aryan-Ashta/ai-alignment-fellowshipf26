@@ -47,3 +47,14 @@ def test_resume_sum_matches_uninterrupted_run():
     first = sum_prompt_rows(model, prompts[:1], cotangents, arch=None, rows_per_pass=2)
     resumed = sum_prompt_rows(model, prompts, cotangents, arch=None, rows_per_pass=2, start=1, acc=first)
     assert torch.equal(full, resumed)
+
+
+def test_sparse_expert_falls_back_to_pooled():
+    from s2.fit_restricted import finalize_experts
+
+    expert_sum = torch.tensor([[[2.0, 0.0]], [[0.0, 8.0]]])
+    expert_count = torch.tensor([1.0, 3.0])
+    experts, pooled, fallback = finalize_experts(expert_sum, expert_count, min_count=2)
+    assert bool(fallback[0]) and not bool(fallback[1])
+    assert torch.allclose(experts[0], pooled)
+    assert torch.allclose(experts[1, 0], torch.tensor([0.0, 8.0 / 3]))

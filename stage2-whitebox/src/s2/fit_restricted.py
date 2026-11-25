@@ -104,3 +104,12 @@ def sum_prompt_rows(model, prompts: list[torch.Tensor], cotangents: torch.Tensor
     if total is None:
         raise ValueError("no prompts")
     return total
+
+
+def finalize_experts(expert_sum: torch.Tensor, expert_count: torch.Tensor, min_count: int = MIN_EXPERT_COUNT) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """``expert_sum`` is ``[E, C, d]``. Returns experts, pooled, and a bool fallback mask."""
+    pooled = expert_sum.sum(0) / expert_count.sum().clamp_min(1)
+    experts = expert_sum / expert_count[:, None, None].clamp_min(1)
+    fallback = expert_count < min_count
+    experts[fallback] = pooled
+    return experts, pooled, fallback
