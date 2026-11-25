@@ -92,3 +92,10 @@
 - Passed: reference subtraction prompt `X=3, Y=2, Z=4` answered `5` (token id 20, then EOS). Merged model saved to `scratch/codi_merged/` (gitignored).
 - Failed: nothing. The first run stopped on `training_args.bin` being a second `.bin`; the loader now reads `pytorch_model.bin` only.
 - Decided: unsloth supplies config and tokenizer shape only. Greedy decode slices logits to `vocab_size - 1`, matching the reference.
+
+### P2 Gate 2
+
+- Did: hook identity on 7B-DPO via `run_checkpoint.py --steps hooks`, and on the merged CODI model.
+- Passed: capture, identity replace, and `final_readout` match logits with max abs diff 0 on both.
+- Failed: nothing.
+- Decided: layer ℓ is the block output. The lens target is layer L-1, before the final norm, and `final_readout` applies that norm.

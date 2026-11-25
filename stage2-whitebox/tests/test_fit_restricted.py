@@ -58,3 +58,44 @@ def test_sparse_expert_falls_back_to_pooled():
     assert bool(fallback[0]) and not bool(fallback[1])
     assert torch.allclose(experts[0], pooled)
     assert torch.allclose(experts[1, 0], torch.tensor([0.0, 8.0 / 3]))
+
+
+def test_all_at_once_cotangent_matches_per_position_sum():
+    from s2.fit_restricted import kept_positions
+
+    torch.manual_seed(2)
+    model = _tiny()
+    ids = torch.randint(0, 64, (1, 20))
+    cotangent = torch.randn(1, 32)
+    together = restricted_rows(model, ids, cotangent, arch=None, rows_per_pass=1)
+    kept = kept_positions(ids.shape[1])
+    acc = torch.zeros_like(together)
+    for position in kept.tolist():
+        partial = torch.zeros_like(cotangent)
+        # Place the cotangent at one target by running the model hook path directly.
+        captured = {}
+
+        def make(index, captured=captured):
+            def hook(_module, _inputs, output):
+                hidden = output[0] if isinstance(output, tuple) else output
+                if index == 0:
+                    hidden.requires_grad_(True)
+                captured[index] = hidden
+            return hook
+
+        handles = [model.model.layers[i].register_forward_hook(make(i)) for i in range(3)]
+        with torch.enable_grad():
+            model(input_ids=ids)
+            for handle in handles:
+                handle.remove()
+            target = captured[2]
+            sources = [captured[0], captured[1]]
+            cot = torch.zeros_like(target)
+            cot[0, position] = cotangent[0].to(target.dtype)
+            grads = torch.autograd.grad(target, sources, cot)
+        for layer, grad in enumerate(grads):
+            acc[0, layer] += grad[0, kept].float().sum(0).cpu()
+        del captured
+    alone = acc / len(kept)
+    rel = (together - alone).norm() / together.norm().clamp_min(1e-12)
+    assert float(rel) < 1e-5, float(rel)
