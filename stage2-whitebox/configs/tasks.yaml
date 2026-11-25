@@ -1,0 +1,14 @@
+mul_symbol: "\xD7"
+template_numbers:
+- 2
+- 4
+nocot_prefill: null
+k_max: 6
+counts:
+  dev: 50
+  pilot: 200
+  main: 300
+seeds:
+  dev: 1
+  pilot: 2
+  main: 3

@@ -1,0 +1,8 @@
+{
+  "nested_dev.parquet": "9d429157f4729b57e8ab4841728b7940aab2103dcc5782881c19d1aa650bf9ac",
+  "nested_main.parquet": "5c9b946cf19af99543a0c0a802b45e8e6d85b2f97f0e886f5bdd3e7e09e7b2e8",
+  "nested_pilot.parquet": "d4ee51ace65c0200258bda8b18a9173ef8b3177e9a6b16bc93c667bc6634eac3",
+  "word_dev.parquet": "4afb9acf7e8a455edafd7d2686970cd6c63a1469ed142c404910d36e2197bd26",
+  "word_main.parquet": "6fc8c98cb7a463eb7e228767c41b6dde865c4475e5495913e1f654761d77557b",
+  "word_pilot.parquet": "3a6c1bdc94f48c81cb8150c87aa3c6364f6138dd99100b4270348fb18d1dc54d"
+}

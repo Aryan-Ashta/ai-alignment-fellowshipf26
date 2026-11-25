@@ -56,7 +56,7 @@
 - Did: generated dev/pilot/main × nested/word, 50/200/300 per k. `TEMPLATE_NUMBERS` from the DPO chat template is `{2, 4}` (`2024` splits into `2` + `202` + `4`). `mul_symbol` is `×`.
 - Passed: 6600 rows, 6600 unique format-independent keys, 0 constraint violations, 0 misaligned variant prompts, k=1 has no variants. Counts match. Unit tests pass.
 - Failed: balance gate is non-blocking and fails for most k≥5 cells, and for k=1 main (`*` share 0.03 nested / 0.00 word). k=1 has only ~9800 legal chains; dev and pilot take the scarce `*` chains first, so main is the remainder. Higher k under-represents `*` because a `*` step also crowds a decile, and the max-deviation greedy will not take it.
-- Decided: keep the specified generation order and report the gate. Null variants after 200 resamples: 1384/16500 patch sources, 396 controls, 187 swaps. Items are kept.
+- Decided: keep the specified generation order and report the gate. Null variants after 200 resamples: 1384/16500 patch sources, 396 controls, 187 swaps. Items are kept. Rebuild of `10_make_tasks.py` reproduced `data/MANIFEST.json` byte-for-byte (`match True`).
 
 ### P3.1 LRP mode
 

@@ -67,3 +67,26 @@ def test_draw_is_deterministic_and_balanced_selection_is_stable():
     again = select_balanced(second, 8)
     assert [chain.key() for chain in chosen] == [chain.key() for chain in again]
     assert len({chain.key() for chain in chosen}) == 8
+
+
+def test_prompt_wrap_and_template_sha_match_across_7b():
+    import yaml
+    from pathlib import Path
+    from transformers import AutoTokenizer
+    from s2.tasks import chat_template_sha, render_prompt
+
+    root = Path(__file__).resolve().parents[1]
+    models = yaml.safe_load((root / "configs" / "models.yaml").read_text())
+    shas = []
+    tok = None
+    for slot, entry in models["olmo3_7b"].items():
+        tok = AutoTokenizer.from_pretrained(entry["repo"], revision=entry["revision"])
+        shas.append(chat_template_sha(tok))
+    assert len(set(shas)) == 1
+    text, ids = render_prompt(tok, "((17 + 25) - 9) × 2 =", "nocot", "</think>\n\n")
+    assert text.endswith("</think>\n\n")
+    assert "<think>" in text
+    assert ids[-1] == tok.encode("</think>\n\n", add_special_tokens=False)[-1]
+    cot, _ = render_prompt(tok, "((17 + 25) - 9) × 2 =", "cot")
+    assert "Answer with only the final number" not in cot
+    assert cot.endswith("<think>\n") or cot.rstrip().endswith("<think>")

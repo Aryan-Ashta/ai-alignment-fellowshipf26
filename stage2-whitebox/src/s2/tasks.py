@@ -453,3 +453,30 @@ def generate_items(template_numbers: set[int], tok, mul_symbol: str = MUL_SYMBOL
                         }
                     )
     return rows
+
+
+NOCOT_INSTRUCTION = "Answer with only the final number and nothing else."
+
+
+def render_prompt(tokenizer, problem: str, mode: str, prefill: str | None = None) -> tuple[str, list[int]]:
+    """Chat-template wrap. ``nocot`` appends ``prefill`` after the generation prompt."""
+    if mode == "nocot":
+        user = f"{problem}\n{NOCOT_INSTRUCTION}"
+    elif mode == "cot":
+        user = problem
+        prefill = None
+    else:
+        raise ValueError(mode)
+    text = tokenizer.apply_chat_template(
+        [{"role": "user", "content": user}],
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+    if prefill:
+        text += prefill
+    return text, tokenizer.encode(text, add_special_tokens=False)
+
+
+def chat_template_sha(tokenizer) -> str:
+    template = getattr(tokenizer, "chat_template", None) or ""
+    return hashlib.sha256(template.encode()).hexdigest()
