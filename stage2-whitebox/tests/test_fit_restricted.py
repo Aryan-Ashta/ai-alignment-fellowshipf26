@@ -34,3 +34,16 @@ def test_batched_vjp_matches_per_row_loop():
     rel = (one - batched_plain).norm() / one.norm().clamp_min(1e-12)
     assert float(rel) < 1e-5, float(rel)
     assert batched.shape == one.shape
+
+
+def test_resume_sum_matches_uninterrupted_run():
+    from s2.fit_restricted import sum_prompt_rows
+
+    torch.manual_seed(1)
+    model = _tiny()
+    prompts = [torch.randint(0, 64, (1, 24)) for _ in range(2)]
+    cotangents = torch.randn(2, 32)
+    full = sum_prompt_rows(model, prompts, cotangents, arch=None, rows_per_pass=2)
+    first = sum_prompt_rows(model, prompts[:1], cotangents, arch=None, rows_per_pass=2)
+    resumed = sum_prompt_rows(model, prompts, cotangents, arch=None, rows_per_pass=2, start=1, acc=first)
+    assert torch.equal(full, resumed)

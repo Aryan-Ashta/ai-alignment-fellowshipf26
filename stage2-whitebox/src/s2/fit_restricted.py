@@ -91,3 +91,16 @@ class _null_context:
 
     def __exit__(self, *exc):
         return False
+
+
+def sum_prompt_rows(model, prompts: list[torch.Tensor], cotangents: torch.Tensor, *, arch: str | None, rows_per_pass: int = 8, start: int = 0, acc: torch.Tensor | None = None) -> torch.Tensor:
+    """Sum restricted rows over prompts. ``acc`` lets a killed run resume at ``start``."""
+    total = acc
+    for index, ids in enumerate(prompts):
+        if index < start:
+            continue
+        rows = restricted_rows(model, ids, cotangents, arch=arch, rows_per_pass=rows_per_pass)
+        total = rows if total is None else total + rows
+    if total is None:
+        raise ValueError("no prompts")
+    return total
