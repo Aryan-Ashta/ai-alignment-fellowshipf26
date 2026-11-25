@@ -64,3 +64,17 @@
 - Passed: `tests/test_lrp.py`. Logits with LRP on vs off are bitwise equal on tiny Olmo3 and Llama. Olmo3 input-gradients match `apply_lrp_rules_for_mode(..., "rlens")` with relative error < 1e-6. Patch names match, and `q_norm`/`k_norm` are not patched.
 - Failed: a direct `z * sigmoid(z)` rewrite differed from `F.silu` by ~1e-7. The identity rule now returns `F.silu` in the forward and the detached-sigmoid gradient in the backward, so both gates hold.
 - Decided: that forward correction is required by the bit-identity gate and does not drop the jpp gradient match.
+
+### P0.6 Gate 0.4 attention — stop
+
+- Did: `00_attn.py` then `00_attn_dtype.py`. Reference is CPU fp32 sdpa. Candidates are MPS bf16 sdpa, chunked sdpa, and chunked eager.
+- Passed: 512-token spot check (min cosine 0.99892, argmax 0.9941). At 4096 and 8192 the median cosine is ≥ 0.99992 and fewer than 0.2% of positions are under 0.995.
+- Failed: no path meets every-position cosine ≥ 0.995 and argmax ≥ 99% against CPU fp32 at 4096, so none were scored as passing at 8192. CPU bf16 versus CPU fp32 fails the same bar (8192 min cosine 0.956, argmax 0.987). MPS bf16 versus CPU bf16 at 8192 is min cosine 0.934, argmax 0.989, median 0.99992.
+- Decided: stop and ask. This is not the silent MPS score-matrix corruption (that would not leave a 0.9999 median). Recommendation: use path (a) sdpa for Phase 6 and record the measured floor. Short-sequence work (fit at 128, readouts) does not depend on this.
+
+### P0.6 Gate 0.5 memory
+
+- Did: `00_memory.py` on 7B-DPO bf16 MPS. Peaks from `torch.mps.driver_allocated_memory()`.
+- Passed: load 15.61 GB, forward+backward 8×128 24.24 GB, forward 1×16384 29.64 GB. All fit in 48 GB.
+- Failed: nothing.
+- Decided: the restricted fit at batch 8×128 has room. A 16k forward fits alone; do not overlap it with another model load.
