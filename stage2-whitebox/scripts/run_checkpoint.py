@@ -61,9 +61,6 @@ def run_hooks(model_key: str, device: str, attn: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", required=True)
-    parser.add_argument("--ckpt", default=None)
-    parser.add_argument("--device", default="mps")
     parser.add_argument("--attn", default="sdpa")
     parser.add_argument("--results-root", default="results")
     parser.add_argument("--split", default="pilot")

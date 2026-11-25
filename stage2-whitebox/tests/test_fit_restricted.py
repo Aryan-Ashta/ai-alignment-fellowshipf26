@@ -99,3 +99,14 @@ def test_all_at_once_cotangent_matches_per_position_sum():
     alone = acc / len(kept)
     rel = (together - alone).norm() / together.norm().clamp_min(1e-12)
     assert float(rel) < 1e-5, float(rel)
+
+
+def test_readout_cotangent_includes_the_norm_gain():
+    from s2.fit_restricted import readout_cotangents
+
+    head = torch.ones(4, 3)
+    gain = torch.tensor([2.0, 3.0, 4.0])
+    with_gain = readout_cotangents(head, gain, [1], include_gain=True)
+    without = readout_cotangents(head, gain, [1], include_gain=False)
+    assert torch.equal(with_gain, gain.view(1, 3))
+    assert torch.equal(without, torch.ones(1, 3))

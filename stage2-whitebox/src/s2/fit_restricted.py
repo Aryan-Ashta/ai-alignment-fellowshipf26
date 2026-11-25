@@ -113,3 +113,10 @@ def finalize_experts(expert_sum: torch.Tensor, expert_count: torch.Tensor, min_c
     fallback = expert_count < min_count
     experts[fallback] = pooled
     return experts, pooled, fallback
+
+
+def readout_cotangents(lm_head_weight: torch.Tensor, norm_weight: torch.Tensor, token_ids: list[int], *, include_gain: bool) -> torch.Tensor:
+    rows = lm_head_weight[token_ids].float()
+    if include_gain:
+        rows = rows * norm_weight.float()
+    return rows
