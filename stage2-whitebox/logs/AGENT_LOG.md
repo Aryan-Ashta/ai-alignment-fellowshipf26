@@ -43,3 +43,10 @@
 - Passed: 32 layers, d_model 4096, 32 KV heads, intermediate 11008, vocab 100278, untied embeddings, sliding window 4096, `layer_types` = (3× sliding_attention, 1× full_attention)×8, attention `sdpa`. `final_norm` is `Olmo3RMSNorm` with no bias. `lm_head` is `nn.Linear` with no bias. Block norms are `post_attention_layernorm`, `post_feedforward_layernorm`, plus `q_norm`/`k_norm`.
 - Failed: nothing.
 - Decided: final-norm has no bias and the LM head is a plain matrix, so the restricted lens cotangent `g ⊙ w_v` is valid. q_norm/k_norm stay out of the LRP patch, matching jpp.
+
+### P0.6 Gate 0.3 throughput
+
+- Did: `scripts/00_bench.py`. Best of 5 bf16 matmuls after warm-up, plus one 7B forward+backward at batch 8×128 with input grads only.
+- Passed: torch 30.05 / 29.31 TFLOPS, MLX 30.54 / 31.01 TFLOPS (ratios 1.02 and 1.06). Forward+backward 2.00 s.
+- Failed: nothing.
+- Decided: MLX is not ≥ 2× on matmul, and the plan already keeps the fitter on torch-MPS. MLX stays the CoT-generation backend only. No MLX fitter port.
