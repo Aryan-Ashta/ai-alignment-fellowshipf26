@@ -2,7 +2,10 @@ mul_symbol: "\xD7"
 template_numbers:
 - 2
 - 4
-nocot_prefill: null
+nocot_prefill: '</think>
+
+
+  '
 k_max: 6
 counts:
   dev: 50
@@ -12,3 +15,7 @@ seeds:
   dev: 1
   pilot: 2
   main: 3
+nocot_prefill_rates:
+  </think>: 0.62
+  </think>\n: 0.72
+  </think>\n\n: 1.0

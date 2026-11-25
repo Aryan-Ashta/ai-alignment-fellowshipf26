@@ -78,3 +78,10 @@
 - Passed: load 15.61 GB, forward+backward 8×128 24.24 GB, forward 1×16384 29.64 GB. All fit in 48 GB.
 - Failed: nothing.
 - Decided: the restricted fit at batch 8×128 has room. A 16k forward fits alone; do not overlap it with another model load.
+
+### P1.8 prefill calibration
+
+- Did: `11_calibrate_prefill.py` on 50 dev k=1 nested items, 7B-DPO, first-token argmax. Not a long job, so it ran on battery.
+- Passed: `</think>` 0.62, `</think>\n` 0.72, `</think>\n\n` 1.00. Chose the shortest candidate at ≥ 90%, which is `</think>\n\n`. Frozen in `configs/tasks.yaml`.
+- Failed: nothing.
+- Decided: that string is the prefill for every checkpoint. The pilot still reports the per-checkpoint first-token-is-number rate.

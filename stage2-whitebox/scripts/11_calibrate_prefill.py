@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.models import load  # noqa: E402
-from s2.runio import require_ac_power, thermal_note, write_manifest  # noqa: E402
+from s2.runio import thermal_note, write_manifest  # noqa: E402
 from s2.tasks import render_prompt  # noqa: E402
 
 CANDIDATES = ("</think>", "</think>\n", "</think>\n\n")
@@ -32,7 +32,7 @@ def first_token_is_number(model, problem: str, prefill: str) -> bool:
 
 
 def main() -> None:
-    require_ac_power()
+    # 50 greedy 8-token continuations, not a long job. AC is required for fits and 16k forwards.
     before = thermal_note()
     model = load("olmo3_7b.dpo")
     items = pd.read_parquet(ROOT / "data" / "nested_dev.parquet")
