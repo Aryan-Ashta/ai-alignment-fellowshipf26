@@ -1,0 +1,8 @@
+scratch/
+third_party/
+.venv/
+**/*.bin
+**/*.pt
+lenses/**/*.safetensors
+results/**/raw/
+__pycache__/

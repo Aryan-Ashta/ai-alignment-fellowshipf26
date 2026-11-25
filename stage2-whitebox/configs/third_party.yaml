@@ -1,0 +1,15 @@
+# Pinned reference checkouts. scripts/setup_third_party.sh clones these and
+# refuses any other revision. Do not edit the cloned trees.
+pins:
+  jacobian-lens:
+    repo: anthropics/jacobian-lens
+    url: https://github.com/anthropics/jacobian-lens.git
+    revision: 581d398613e5602a5af361e1c34d3a92ea82ba8e
+  jpp_lens:
+    repo: safety-research/jpp_lens
+    url: https://github.com/safety-research/jpp_lens.git
+    revision: d7efc0de372e20589e899188c0cfe8434acc63ec
+  codi:
+    repo: cywinski/codi
+    url: https://github.com/cywinski/codi.git
+    revision: f0bf2fa0f5a54c749395a5d095bc406ad18b8efc
