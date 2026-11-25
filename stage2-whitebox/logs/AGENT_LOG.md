@@ -113,3 +113,10 @@
 - Passed: each calls `require_ac_power()` before loading a model. On battery they raise `Long job refused: not on AC power` and do not start.
 - Failed: the laptop is on battery, so the 7B fit, pilot, and CODI Gate 4 have not run.
 - Decided: do not bypass the AC check. Plug in, then `caffeinate -dimsu uv run python scripts/31_fit.py --model olmo3_7b --ckpt dpo`, then readout, nocot, swap, and patch.
+
+### P3 fit launch
+
+- Did: AC is connected. Started `scripts/31_fit.py --model olmo3_7b --ckpt dpo --prompts 32`.
+- Passed: the AC check let it start. Candidates file is `lenses/olmo3/candidates.json`.
+- Failed: nothing yet. The job is still running.
+- Decided: 32 prompts first, then the 16-prompt cosine check, before committing to 64.
