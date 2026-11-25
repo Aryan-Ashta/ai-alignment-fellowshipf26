@@ -1,0 +1,11 @@
+long_seq_attn:
+  path: a
+  chunk: 1024
+  floor:
+    length: 8192
+    min_cosine_vs_cpu_fp32: 0.97157
+    argmax_agreement_vs_cpu_fp32: 0.9877
+    median_cosine_vs_cpu_fp32: 0.99994
+    approved: 2026-11-25
+    note: Every-position cosine 0.995 vs CPU fp32 is not met. CPU bf16 misses the same bar. Median cosine stays 0.9999. Aryan approved path (a) sdpa.
+astra_instruction: null

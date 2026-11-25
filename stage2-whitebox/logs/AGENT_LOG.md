@@ -70,7 +70,7 @@
 - Did: `00_attn.py` then `00_attn_dtype.py`. Reference is CPU fp32 sdpa. Candidates are MPS bf16 sdpa, chunked sdpa, and chunked eager.
 - Passed: 512-token spot check (min cosine 0.99892, argmax 0.9941). At 4096 and 8192 the median cosine is ≥ 0.99992 and fewer than 0.2% of positions are under 0.995.
 - Failed: no path meets every-position cosine ≥ 0.995 and argmax ≥ 99% against CPU fp32 at 4096, so none were scored as passing at 8192. CPU bf16 versus CPU fp32 fails the same bar (8192 min cosine 0.956, argmax 0.987). MPS bf16 versus CPU bf16 at 8192 is min cosine 0.934, argmax 0.989, median 0.99992.
-- Decided: stop and ask. This is not the silent MPS score-matrix corruption (that would not leave a 0.9999 median). Recommendation: use path (a) sdpa for Phase 6 and record the measured floor. Short-sequence work (fit at 128, readouts) does not depend on this.
+- Decided: asked Aryan. Approved path (a) sdpa for Phase 6, with the measured floor recorded in `configs/gen.yaml`. Short-sequence work does not use this path.
 
 ### P0.6 Gate 0.5 memory
 
