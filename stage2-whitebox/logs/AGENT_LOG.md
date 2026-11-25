@@ -29,3 +29,10 @@
 - Passed: live SHAs match the 2026-11-25 facts. 7B `main` weight sha256s differ from `step_1375`. 32B `Olmo-3.1@step_0750` ≡ `Olmo-3@step_750`. 32B `Olmo-3.1@main` ≡ `step_2300`. `codi_base` `model.safetensors` is 2471645608 bytes at `5a8abab4a5d6f164389b1079fb721cfab8d7126c`. `tests/test_runio.py` 4 passed. `tests/test_checkpoints.py` asserts revisions are 40-hex SHAs and no `from_pretrained` call passes a branch literal.
 - Failed: nothing.
 - Decided: 7B final `rl_step` is 1375 with `label: main` (bytes differ from `step_1375`). 32B final `rl_step` is 2300 with `label: main` because that revision is byte-identical to `step_2300`. `shard_sha256` stores file, sha256, and size so both safetensors and bin shards stay auditable.
+
+### P0.6 Gate 0.1 tokenizer
+
+- Did: ran `scripts/00_tokenizer.py` on the four 7B revisions, 32B DPO, and CODI, all by revision SHA.
+- Passed: every `"0"`…`"99"` is one token. Ids are identical across the five Olmo tokenizers and also match CODI. `space_number_merge` is false; `" 42"` is `[space, 42]`, not one token. No stop.
+- Failed: nothing.
+- Decided: `*` and `×` both absorb the leading space into one token and leave the surrounding ids unchanged (`(17 + 25) * 3 =` vs `×` differ only in the operator id). Plan says use `*` unless that holds, so `tasks.yaml: mul_symbol` will be `×`. `</think>` is not one token (`</` + `think` + `>`); prefill calibration will append the string and measure the first generated token, not assume a single special id.
