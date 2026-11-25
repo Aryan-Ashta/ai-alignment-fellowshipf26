@@ -74,8 +74,15 @@ def main() -> None:
             continue
         if step in LONG_STEPS:
             require_ac_power()
-            raise SystemExit(f"{step} is implemented as a long job and is not launched from this driver yet")
-        if step == "hooks":
+            if step == "fit":
+                import subprocess
+
+                subprocess.check_call(
+                    [sys.executable, str(ROOT / "scripts" / "31_fit.py"), "--model", args.model, "--ckpt", args.ckpt or "dpo", "--device", args.device]
+                )
+            else:
+                raise SystemExit(f"{step} is not wired yet")
+        elif step == "hooks":
             run_hooks(key, args.device, args.attn)
         else:
             raise SystemExit(f"unknown step {step}")
