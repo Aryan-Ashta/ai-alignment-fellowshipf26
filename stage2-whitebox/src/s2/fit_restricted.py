@@ -115,6 +115,19 @@ def finalize_experts(expert_sum: torch.Tensor, expert_count: torch.Tensor, min_c
     return experts, pooled, fallback
 
 
+def accumulate_expert_rows(position_rows: torch.Tensor, assignments: torch.Tensor, n_experts: int) -> tuple[torch.Tensor, torch.Tensor]:
+    """``position_rows`` is ``[P, C, d]``. Returns ``sum[E, C, d]`` and ``count[E]``."""
+    c, d = position_rows.shape[1:]
+    expert_sum = torch.zeros(n_experts, c, d, dtype=position_rows.dtype)
+    expert_count = torch.zeros(n_experts, dtype=torch.float32)
+    for expert in range(n_experts):
+        mask = assignments == expert
+        expert_count[expert] = float(mask.sum())
+        if expert_count[expert]:
+            expert_sum[expert] = position_rows[mask].sum(0)
+    return expert_sum, expert_count
+
+
 def readout_cotangents(lm_head_weight: torch.Tensor, norm_weight: torch.Tensor, token_ids: list[int], *, include_gain: bool) -> torch.Tensor:
     rows = lm_head_weight[token_ids].float()
     if include_gain:

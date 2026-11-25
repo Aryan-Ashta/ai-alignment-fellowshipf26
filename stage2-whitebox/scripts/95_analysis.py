@@ -11,17 +11,29 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from s2.analysis.bootstrap import accuracy_table  # noqa: E402
 from s2.analysis.depth import Thresholds  # noqa: E402
 from s2.analysis.plots import plot_depth  # noqa: E402
 from s2.analysis.tables import depth_table  # noqa: E402
 
 
 def main() -> None:
+    models = yaml.safe_load((ROOT / "configs" / "models.yaml").read_text())
+    out = ROOT / "results" / "analysis"
+    wrote_accuracy = False
+    for family in ("olmo3_7b", "olmo3_32b"):
+        for slot in models[family]:
+            nocot = ROOT / "results" / f"{family}.{slot}" / "nocot.parquet"
+            if nocot.is_file():
+                accuracy_table(pd.read_parquet(nocot), out / f"accuracy_{family}.{slot}.csv")
+                wrote_accuracy = True
     prereg = ROOT / "prereg" / "thresholds.yaml"
     if not prereg.is_file():
+        if wrote_accuracy:
+            print(f"wrote accuracy tables under {out}; depth waits on prereg/thresholds.yaml")
+            return
         raise SystemExit("prereg/thresholds.yaml does not exist yet; the pilot has not been frozen")
     thresholds = Thresholds.load(prereg)
-    models = yaml.safe_load((ROOT / "configs" / "models.yaml").read_text())
     frames = []
     for family in ("olmo3_7b", "olmo3_32b"):
         for slot, entry in models[family].items():
@@ -42,8 +54,10 @@ def main() -> None:
                 }
             )
     if not frames:
+        if wrote_accuracy:
+            print(f"wrote accuracy tables under {out}; depth waits on readout and swap parquet")
+            return
         raise SystemExit("no checkpoint has nocot, readout, and swap parquet yet")
-    out = ROOT / "results" / "analysis"
     depth_table(frames, thresholds, out / "depth_by_checkpoint.csv")
     plot_depth(out / "depth_by_checkpoint.csv", out / "depth.png")
     print(f"wrote {out}")

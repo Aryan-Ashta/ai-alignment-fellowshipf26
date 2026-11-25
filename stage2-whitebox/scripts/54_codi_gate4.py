@@ -12,36 +12,14 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-import numpy as np
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from s2.codi import build_merged, codi_latent_run  # noqa: E402
+from s2.codi_items import gate4_items  # noqa: E402
 from s2.runio import require_ac_power  # noqa: E402
-
-ADDITION = "A team starts with {X} members. They recruit {Y} new members. Then each current member recruits {Z} additional people. How many people are there now on the team? Give the answer only and nothing else."
-SUBTRACTION = "A team starts with {X} members. {Y} members leave the team. Then each remaining member recruits {Z} additional people. How many people are there now on the team? Give the answer only and nothing else."
-
-
-def items(n_per: int = 100) -> list[dict]:
-    rng = np.random.default_rng(4)
-    out = []
-    for sign, template in (("+", ADDITION), ("-", SUBTRACTION)):
-        got = 0
-        while got < n_per:
-            x, y, z = int(rng.integers(2, 10)), int(rng.integers(1, 10)), int(rng.integers(2, 6))
-            s1 = x + y if sign == "+" else x - y
-            if s1 < 1:
-                continue
-            s2 = s1 * z
-            answer = s2 + s1
-            if answer > 99 or len({x, y, z, s1, s2, answer}) < 6:
-                continue
-            out.append({"prompt": template.format(X=x, Y=y, Z=z), "s1": s1, "s2": s2, "answer": answer, "z": z, "sign": sign})
-            got += 1
-    return out
 
 
 def top_number(model, hidden: torch.Tensor, number_ids: list[int]) -> int:
@@ -55,7 +33,7 @@ def main() -> None:
     model, projector, tok = build_merged(device="mps")
     number_ids = [tok.encode(str(n), add_special_tokens=False)[0] for n in range(100)]
     correct = []
-    for item in items():
+    for item in gate4_items():
         result = codi_latent_run(model, projector, tok, item["prompt"])
         if str(item["answer"]) in result["answer_text"].split():
             item["hidden"] = result["hidden"]

@@ -71,7 +71,6 @@ def test_all_at_once_cotangent_matches_per_position_sum():
     kept = kept_positions(ids.shape[1])
     acc = torch.zeros_like(together)
     for position in kept.tolist():
-        partial = torch.zeros_like(cotangent)
         # Place the cotangent at one target by running the model hook path directly.
         captured = {}
 
@@ -110,3 +109,16 @@ def test_readout_cotangent_includes_the_norm_gain():
     without = readout_cotangents(head, gain, [1], include_gain=False)
     assert torch.equal(with_gain, gain.view(1, 3))
     assert torch.equal(without, torch.ones(1, 3))
+
+
+def test_expert_accumulation_splits_positions():
+    from s2.fit_restricted import accumulate_expert_rows, finalize_experts
+
+    rows = torch.tensor([[[1.0]], [[3.0]], [[5.0]]])
+    assignments = torch.tensor([0, 1, 0])
+    expert_sum, expert_count = accumulate_expert_rows(rows, assignments, 2)
+    assert torch.equal(expert_count, torch.tensor([2.0, 1.0]))
+    assert torch.equal(expert_sum[0, 0], torch.tensor([6.0]))
+    experts, pooled, fallback = finalize_experts(expert_sum, expert_count, min_count=2)
+    assert bool(fallback[1]) and not bool(fallback[0])
+    assert torch.allclose(experts[1], pooled)
