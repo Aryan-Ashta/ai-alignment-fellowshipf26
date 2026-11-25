@@ -99,3 +99,10 @@
 - Passed: capture, identity replace, and `final_readout` match logits with max abs diff 0 on both.
 - Failed: nothing.
 - Decided: layer ℓ is the block output. The lens target is layer L-1, before the final norm, and `final_readout` applies that norm.
+
+### P6.3 Astra arm
+
+- Did: `scripts/62_astra.py`.
+- Passed: `configs/gen.yaml: astra_instruction` is null, so the arm skipped.
+- Failed: nothing.
+- Decided: do not invent Sunny's CoT-Control wording. The arm stays skipped until that string is supplied.
