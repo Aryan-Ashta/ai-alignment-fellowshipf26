@@ -1,0 +1,336 @@
+olmo3_7b:
+  dpo:
+    repo: allenai/Olmo-3-7B-Think-DPO
+    branch: main
+    revision: 7b18bf927b430ff06376fdfa5610eb3b1b6a5c38
+    rl_step: 0
+    label: dpo
+    shard_sha256:
+    - file: model-00001-of-00003.safetensors
+      sha256: c3021a8d3a0834b85f3a729c036c44a2237148e8d71c19eab6c474b88fb9614b
+      size: 4969984976
+    - file: model-00002-of-00003.safetensors
+      sha256: 40693e47833b3f0e7cfe1e77c970f6cb7dbbced0149dc507cf997b2dabd30eaf
+      size: 4981161496
+    - file: model-00003-of-00003.safetensors
+      sha256: d54321b82037a2a7f9c37dd7f7777e2b12cefd39632bd198a5a79f700ab16774
+      size: 4644917240
+    - file: pytorch_model-00001-of-00003.bin
+      sha256: 65edc47859b4add8102edd5afa9ec0513350b7048281779f29fb28f9f236b847
+      size: 4970011167
+    - file: pytorch_model-00002-of-00003.bin
+      sha256: ecea0fad669eeb1d32fef890b83084bf925019e35f3772963342533ef8e38deb
+      size: 4981192677
+    - file: pytorch_model-00003-of-00003.bin
+      sha256: d1ffad7e5e966e660d72c5bda0ebf104870f8dfe4ce318f896666f5e2bf81dbb
+      size: 4644941224
+  early:
+    repo: allenai/Olmo-3-7B-Think
+    branch: step_0150
+    revision: ce0ae8ce5ea7a89856a75d662de888deebc39105
+    rl_step: 150
+    label: step_0150
+    shard_sha256:
+    - file: model-00001-of-00003.safetensors
+      sha256: 84e9d072584a048bc1cb8cd60fb723311f0ea68c8a0d49b8647084b301a37218
+      size: 4969984976
+    - file: model-00002-of-00003.safetensors
+      sha256: 5e0b58c8dc39b3d62121d04382c87e682890dbb4bbc2b7c2c7ce8ecb9cd212a9
+      size: 4981161496
+    - file: model-00003-of-00003.safetensors
+      sha256: 149137ec5b12cce346c0d05f7efb6b21d51965129f271d77ad0db4e17189fdfa
+      size: 4644917240
+  mid:
+    repo: allenai/Olmo-3-7B-Think
+    branch: step_0700
+    revision: d8d03802a525af6e346859adb9f39fad216f1bb8
+    rl_step: 700
+    label: step_0700
+    shard_sha256:
+    - file: model-00001-of-00003.safetensors
+      sha256: 6c2029cbcc2490d4ad2dd40bb1642ba64439e14a6963d201738fa70b27e1f6f3
+      size: 4969984976
+    - file: model-00002-of-00003.safetensors
+      sha256: b36941c63bb63bebff143b5ba4442d619e67f721230e66b173fb263aff934304
+      size: 4981161496
+    - file: model-00003-of-00003.safetensors
+      sha256: 8a029019d7e83614984ebc01175854054ed9737e0f760efe7e55b6185a52ea14
+      size: 4644917240
+  final:
+    repo: allenai/Olmo-3-7B-Think
+    branch: main
+    revision: d97e442d7cc678210054dbcc9b440894d62c89a4
+    rl_step: 1375
+    label: main
+    shard_sha256:
+    - file: model-00001-of-00003.safetensors
+      sha256: 611c266f99a1e0575ba9f595e2f44e103aaa03a0c83b244725d6598aee934a7d
+      size: 4969984976
+    - file: model-00002-of-00003.safetensors
+      sha256: a032a27f1768184ad0d955752e3564c14b7d1c673d1630f0df7429a439da4f41
+      size: 4981161496
+    - file: model-00003-of-00003.safetensors
+      sha256: 50ba91f88796c1ed04cacdb9271fa02d213722734dffe05d399eb27bcff7129b
+      size: 4644917240
+olmo3_32b:
+  dpo:
+    repo: allenai/Olmo-3-32B-Think-DPO
+    branch: main
+    revision: 97604023f2602a7dfe6d31b1fc229985e0002022
+    rl_step: 0
+    label: dpo
+    shard_sha256:
+    - file: model-00001-of-00014.safetensors
+      sha256: af1d34c2db486bc0b3adff2ce27e147480b8282606c40420ca5a69d844bea1f3
+      size: 4990600552
+    - file: model-00002-of-00014.safetensors
+      sha256: 8f21dc7811dda6fbaa6134f1d226c7df0a56106de603e4da156b3b300ecd87f3
+      size: 4938975944
+    - file: model-00003-of-00014.safetensors
+      sha256: 79cf8938421a2680b570d93cfb7a4feea7e9c36f784711c8761a444542197875
+      size: 4876048688
+    - file: model-00004-of-00014.safetensors
+      sha256: 2e8e9d4bd073fba518ddbff58664b7b26429b92c6bd6f0df37011bfe42b98bbd
+      size: 4876048704
+    - file: model-00005-of-00014.safetensors
+      sha256: 244f3a25e83858bfc2844595e2b4b21526c63b96b2d3c198696127be8c775990
+      size: 4876048704
+    - file: model-00006-of-00014.safetensors
+      sha256: 46761c3b51e91be41347e0ab5b2d2d4a673d06126990b19cdc671ed101557a62
+      size: 4876048704
+    - file: model-00007-of-00014.safetensors
+      sha256: 6a7b94f4644d64ba417c3096fde549fb5545a0c510b276d6946851e7e1b6c69f
+      size: 4876048704
+    - file: model-00008-of-00014.safetensors
+      sha256: e8d02a11d2a751177135875c48f3fce24435c7f8a3eb954ca8cfa1135c6a0586
+      size: 4876048704
+    - file: model-00009-of-00014.safetensors
+      sha256: 2050b344dd77a84796082a60a69489eef9c125d7c71398de73ede4416aa05146
+      size: 4876048704
+    - file: model-00010-of-00014.safetensors
+      sha256: a3bd1f8f8529a7a585a77fd1f6d5028d1da1e75b723f41c916378e33b91b686a
+      size: 4876048704
+    - file: model-00011-of-00014.safetensors
+      sha256: f1bafb1b10efd306e6211d9cc342b74f9f01cfd42eaf92ee8906935d3cd8f456
+      size: 4876048704
+    - file: model-00012-of-00014.safetensors
+      sha256: 1cc973bb94dd249f334555b161a69469205e3d2eef2077661ef5bd1de8e512e9
+      size: 4876048704
+    - file: model-00013-of-00014.safetensors
+      sha256: b6d202af3b755d164bee284117571b26f0ab45b3f94623570ec49335513ea501
+      size: 4750216928
+    - file: model-00014-of-00014.safetensors
+      sha256: 8be58f40a1c759d4b94e2a1cb192d694ea1c934c4ca15f9dac270bb03a85a048
+      size: 1026846848
+    - file: pytorch_model-00001-of-00014.bin
+      sha256: f61c1044ce9525022029b7630d9572a8247e6d55542d66a457f45481e7c2b5fd
+      size: 4990611799
+    - file: pytorch_model-00002-of-00014.bin
+      sha256: 573943e7c9afe11bee262f5bfa7ec5287118617cb29d092ba4d8f69b76223a24
+      size: 4938989907
+    - file: pytorch_model-00003-of-00014.bin
+      sha256: 795ef75421c81d36a6d8bd398e2189c3d5de2907f76ae189127101aa8d3237bc
+      size: 4876061707
+    - file: pytorch_model-00004-of-00014.bin
+      sha256: e8e5a8bdfa4b69229d096e811f9a287da70b95e533327253963c39b374a65596
+      size: 4876061771
+    - file: pytorch_model-00005-of-00014.bin
+      sha256: c52e955b39dac401725c54a71d3b09aa5bb11e76e6a41c89c9f717b719d58ffe
+      size: 4876061771
+    - file: pytorch_model-00006-of-00014.bin
+      sha256: 10ff4cf96867595d35b70e581df626f4fa8ed6db8729eb952f2fd923257870ed
+      size: 4876061771
+    - file: pytorch_model-00007-of-00014.bin
+      sha256: df38552ee5e1538491d9c589e321b1d3f4d432407832e8a4463f90735c1e6c85
+      size: 4876061771
+    - file: pytorch_model-00008-of-00014.bin
+      sha256: 4d66429a2cc17bca081cd426da7f2a45d485f757c66c6760801650c96fed824a
+      size: 4876061771
+    - file: pytorch_model-00009-of-00014.bin
+      sha256: e68632abc8ab278bb88ef35e55d7fd90110a867c3569067832572155da041b96
+      size: 4876061771
+    - file: pytorch_model-00010-of-00014.bin
+      sha256: 52237a9608403afe2e2c5acf149254047279020ea5c5adfe3d7afba1977371bd
+      size: 4876061771
+    - file: pytorch_model-00011-of-00014.bin
+      sha256: b01accf7eb6492b7d28c33cf15f56ad9dd6432e40a41d355a3aafa2351201596
+      size: 4876061771
+    - file: pytorch_model-00012-of-00014.bin
+      sha256: 2d1ed0843e4cd4904e12d89769517c6fbea9f5c67f3e88345c49618855df7da7
+      size: 4876061771
+    - file: pytorch_model-00013-of-00014.bin
+      sha256: 90ce4bdb70840cdec37ff47723c9f971ccfa374a2fe171033fb6cff547e90dec
+      size: 4750228789
+    - file: pytorch_model-00014-of-00014.bin
+      sha256: 4f4006bc8ca5ce2fbadf411abb58c2bc8e21a14b930b4c9ebfdf482233550cfe
+      size: 1026848572
+  early:
+    repo: allenai/Olmo-3.1-32B-Think
+    branch: step_0250
+    revision: 5c349dde8eae4760432cb856bfb53fbc77884705
+    rl_step: 250
+    label: step_0250
+    shard_sha256:
+    - file: model-00001-of-00014.safetensors
+      sha256: 139fd1b3a16b1538eb8e406c96384483c37da5d8b0c0aaf6110f7c07bca73511
+      size: 4990600552
+    - file: model-00002-of-00014.safetensors
+      sha256: 15353b48e34dcb46c6e3a9808bba17d856b6f646ba6a3e9bf45606bddfbbb0ba
+      size: 4938975944
+    - file: model-00003-of-00014.safetensors
+      sha256: 17d98ff8559e4cdb3d3882105e4070097e87d45d0cc0e2426ab117c5084a1a43
+      size: 4876048688
+    - file: model-00004-of-00014.safetensors
+      sha256: 0f09c1e948ddc2ed910e04196cdee1b5b1906b88324f7792571bd44dd9f770aa
+      size: 4876048704
+    - file: model-00005-of-00014.safetensors
+      sha256: edb3b12c3133b17966ba8789c919c4cce10fa6c34faa5daf57dbd3ed9331c00a
+      size: 4876048704
+    - file: model-00006-of-00014.safetensors
+      sha256: 310177bb7ec43498a48ad44a33d0950dff71f9b8ef9e59f941780b8c4c6aca4e
+      size: 4876048704
+    - file: model-00007-of-00014.safetensors
+      sha256: 50a39b82b0638a248b18de58b14315ace1d2f6ee92f3b4d80510121dba7f4b67
+      size: 4876048704
+    - file: model-00008-of-00014.safetensors
+      sha256: cab31ec163ef1ed3b939c1b3df8fbbd870e83a48741acfd9084a88e102efb389
+      size: 4876048704
+    - file: model-00009-of-00014.safetensors
+      sha256: 82df135bdf27ff8a23f71b4806929c1ac6d7a8669a211867b83277e80d82adb9
+      size: 4876048704
+    - file: model-00010-of-00014.safetensors
+      sha256: 7abfe86d89948d0a09843cda3c947e7ceeb12fcf2c6ffc2d8ac50b158f0ab533
+      size: 4876048704
+    - file: model-00011-of-00014.safetensors
+      sha256: 53b4f0af4d6c220b6dfe0d99645f0622d65cc4cbe7c2adee1453063a72f4bf98
+      size: 4876048704
+    - file: model-00012-of-00014.safetensors
+      sha256: d68c2ed620584f8f5392a45f19c625c521e08a1dd880bd5ea871cfc00904eec0
+      size: 4876048704
+    - file: model-00013-of-00014.safetensors
+      sha256: a268dfba6550b851c59e8395114b90f52dbd60c0709af016b9743a6e46c0ebfa
+      size: 4750216928
+    - file: model-00014-of-00014.safetensors
+      sha256: 34f6e8a96ee607e7857a195e4fd7f34fa69f09e2ae7dcce7ae68d15c54c47ebd
+      size: 1026846848
+  mid:
+    repo: allenai/Olmo-3-32B-Think
+    branch: step_750
+    revision: f395de048595db659a2562913961b2ec5585eb42
+    rl_step: 750
+    label: step_750
+    shard_sha256:
+    - file: model-00001-of-00014.safetensors
+      sha256: 594fb95c751eb4bd02617b79e9c8d86f88ad83678ae6c6a006305f7f7dde0a6a
+      size: 4990600552
+    - file: model-00002-of-00014.safetensors
+      sha256: 4eb2d7b6c1617b09f105ea48176f1ffe7dcba835b47b6bd3be5df14f6d5991b6
+      size: 4938975944
+    - file: model-00003-of-00014.safetensors
+      sha256: 9ac07717c533f37d9ed3f9716983f218f25d4591c10f551ba3d2576b0be017fa
+      size: 4876048688
+    - file: model-00004-of-00014.safetensors
+      sha256: b719044459476b6eb643c79d7f6f9671f8a57ba993c2147aef3c82f406204d5d
+      size: 4876048704
+    - file: model-00005-of-00014.safetensors
+      sha256: a95d7e158fd5da01525a3b924fa15c487391e0aac51b6ca3078d2b3067d93cc3
+      size: 4876048704
+    - file: model-00006-of-00014.safetensors
+      sha256: 936ca1d865fbde8ab7d4fb9f80352f345b3ffe017d424ae720629b6080e8835f
+      size: 4876048704
+    - file: model-00007-of-00014.safetensors
+      sha256: 93d58dd51596532e4811a88dd331fd0c9e62af7f7c9082e5e17ab19e9cf0e595
+      size: 4876048704
+    - file: model-00008-of-00014.safetensors
+      sha256: 080fe01af644218fcb809f082050575f013859898007e8b7914df7d5431c406d
+      size: 4876048704
+    - file: model-00009-of-00014.safetensors
+      sha256: db799d376797c9f648bf0a8d62f08d55f0c7928bfa414ab6ffed6d81a981e62c
+      size: 4876048704
+    - file: model-00010-of-00014.safetensors
+      sha256: 36b525c84506e9439488f936fe5ef3e76f6806e59e1779906032f44ea661811a
+      size: 4876048704
+    - file: model-00011-of-00014.safetensors
+      sha256: 4957059c4ff0c6929d1402722e92408481f6e53d59127fc60b340d8ed2fdd208
+      size: 4876048704
+    - file: model-00012-of-00014.safetensors
+      sha256: 1ce37a73f0e5289f93233a2638b4bc81e2930f11bc5c769fdfabb79f5cdd40a9
+      size: 4876048704
+    - file: model-00013-of-00014.safetensors
+      sha256: 5a87e55f6e35a9e75f1003e18696fd9e17b07b84b210dde28e951e909e1a74ff
+      size: 4750216928
+    - file: model-00014-of-00014.safetensors
+      sha256: 354250fab464788ac670f7c9e867351d378659cf0c64853510f928e22e2b39ce
+      size: 1026846848
+  final:
+    repo: allenai/Olmo-3.1-32B-Think
+    branch: main
+    revision: 97ade57a9cc55ed48bcd76be4b7a3b6fee61b80d
+    rl_step: 2300
+    label: main
+    shard_sha256:
+    - file: model-00001-of-00014.safetensors
+      sha256: 483409492d74c42f1a33f484f6201ce9ff81da5b881b085987f5f57e6b5b3890
+      size: 4990600552
+    - file: model-00002-of-00014.safetensors
+      sha256: 23eaf7c6f1abcc910a133c59c90cd21bed9cdf9fb04c5e356ee16b2e41269482
+      size: 4938975944
+    - file: model-00003-of-00014.safetensors
+      sha256: f2f7551de812a207f2bb2c8012688d32d5c5781601113ead1b02df211296a9dc
+      size: 4876048688
+    - file: model-00004-of-00014.safetensors
+      sha256: b90c04a68c44b3019deed83cf07a353af6392d90725ef3bb4790ccb03e316f64
+      size: 4876048704
+    - file: model-00005-of-00014.safetensors
+      sha256: 37cc41a62eb7cce7acea036a5c36886cd7883cb9b76745d881561565f61f789a
+      size: 4876048704
+    - file: model-00006-of-00014.safetensors
+      sha256: 54d19cb772ecbf78345fa372d9a91fb937880865cb60009a81d533d419c18ca1
+      size: 4876048704
+    - file: model-00007-of-00014.safetensors
+      sha256: 82917ae81a5493b51bf6d1290b946e9c461e611e90bee54f99542685a00bb4ec
+      size: 4876048704
+    - file: model-00008-of-00014.safetensors
+      sha256: a06a34491bc51c42e678e2335eb54b0486b48f55baffcdcfdc3ed171821656ef
+      size: 4876048704
+    - file: model-00009-of-00014.safetensors
+      sha256: 9f0a7b1c9f647981f4bdf98fe5550244537e58cc9d77cd6e56fa187aeced4af9
+      size: 4876048704
+    - file: model-00010-of-00014.safetensors
+      sha256: 7644ab126aba2f5a9053d9ab586f8d45db83d60e3cecfad3e979456151058938
+      size: 4876048704
+    - file: model-00011-of-00014.safetensors
+      sha256: 298c9a587de0f84d6f37e10da08af226eab989d0d32363e94c09a4fe6a7eac1c
+      size: 4876048704
+    - file: model-00012-of-00014.safetensors
+      sha256: dff97b82d38a7456cd24509f5d800a32baf3ede96ded09f10f34fd919f244ef7
+      size: 4876048704
+    - file: model-00013-of-00014.safetensors
+      sha256: 5335c64eb619de53a052cf2c42f38ed9c1ba71197186d76e81bf64150f3b08c4
+      size: 4750216928
+    - file: model-00014-of-00014.safetensors
+      sha256: 907c2ea0acd7f9bf256e87a579d8f277ba9505f56a7c8352dbca4710ff811885
+      size: 1026846848
+codi:
+  repo: bcywinski/codi_llama1b-answer_only
+  branch: main
+  revision: 315ec5cb5f9a071f950edb8455ca5c9a5f59691e
+  rl_step: null
+  label: codi
+  shard_sha256:
+  - file: pytorch_model.bin
+    sha256: 57c0955bd86b827c90e94355f56cfdc9986bad0a76c4dc977cb56e22eb862d4b
+    size: 2669047043
+  - file: training_args.bin
+    sha256: eecc80856c40e00790ef884c28c732eb12b9434c8acb6c55b3b4d5ab9946beda
+    size: 6673
+codi_base:
+  repo: unsloth/Llama-3.2-1B-Instruct
+  branch: main
+  revision: 5a8abab4a5d6f164389b1079fb721cfab8d7126c
+  rl_step: null
+  label: codi_base
+  shard_sha256:
+  - file: model.safetensors
+    sha256: 1ff795ff6a07e6a68085d206fb84417da2f083f68391c2843cd2b8ac6df8538f
+    size: 2471645608
