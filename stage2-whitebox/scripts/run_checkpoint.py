@@ -1,8 +1,9 @@
-"""Per-checkpoint driver. Long steps refuse unless the machine is on AC.
+"""Per-checkpoint driver. Long steps refuse unless the Mac is on AC.
 
 A step reruns when ``STEP_DONE/<step>.json`` is missing or records a different
-code commit. Implemented steps: ``hooks``. Fit, router, weights, readout,
-swap, patch and cot are refused on battery and are not faked.
+code commit. ``hooks`` runs in process. Router, fit, readout, no-CoT, swap,
+patch and CoT call the matching script. Expert weights stay unwired until a
+logit tensor exists.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from s2.models import load  # noqa: E402
 from s2.runio import code_commit, require_ac_power  # noqa: E402
 
-LONG_STEPS = {"router", "fit", "weights", "readout", "swap", "patch", "cot"}
+LONG_STEPS = {"router", "fit", "weights", "readout", "nocot", "swap", "patch", "cot"}
 
 
 def marker(results: Path, step: str) -> Path:
@@ -59,29 +60,47 @@ def run_hooks(model_key: str, device: str, attn: str) -> None:
     print(f"hooks ok {model_key} {model.revision}")
 
 
+def step_argv(step: str, model: str, ckpt: str, device: str, split: str) -> list[str]:
+    scripts = {
+        "router": "30_router.py",
+        "fit": "31_fit.py",
+        "readout": "40_readouts.py",
+        "nocot": "50_nocot.py",
+        "swap": "51_swap.py",
+        "patch": "52_patch.py",
+        "cot": "60_cot.py",
+    }
+    if step not in scripts:
+        raise SystemExit(f"{step} is not wired yet")
+    argv = [sys.executable, str(ROOT / "scripts" / scripts[step]), "--model", model, "--ckpt", ckpt, "--device", device]
+    if step in {"nocot", "swap", "cot"}:
+        argv.extend(["--split", split])
+    return argv
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--ckpt", default=None)
+    parser.add_argument("--device", default="mps")
     parser.add_argument("--attn", default="sdpa")
     parser.add_argument("--results-root", default="results")
     parser.add_argument("--split", default="pilot")
     parser.add_argument("--steps", default="hooks")
     args = parser.parse_args()
+    if args.ckpt is None and args.model != "codi":
+        raise SystemExit("--ckpt is required")
     key = f"{args.model}.{args.ckpt}" if args.ckpt else args.model
     results = Path(args.results_root) / key
     for step in args.steps.split(","):
         if step_current(results, step):
             print(f"skip {step}")
             continue
-        if step in LONG_STEPS:
+        if step in LONG_STEPS or step == "nocot":
             require_ac_power()
-            if step == "fit":
-                import subprocess
+            import subprocess
 
-                subprocess.check_call(
-                    [sys.executable, str(ROOT / "scripts" / "31_fit.py"), "--model", args.model, "--ckpt", args.ckpt or "dpo", "--device", args.device]
-                )
-            else:
-                raise SystemExit(f"{step} is not wired yet")
+            subprocess.check_call(step_argv(step, args.model, args.ckpt or "dpo", args.device, args.split))
         elif step == "hooks":
             run_hooks(key, args.device, args.attn)
         else:

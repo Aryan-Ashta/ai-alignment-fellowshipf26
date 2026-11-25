@@ -46,7 +46,10 @@ def require_ac_power(text: str | None = None) -> None:
     """Raise unless ``pmset -g batt`` reports AC power.
 
     ``text`` is for tests. Production callers omit it and read ``pmset``.
+    A non-macOS host has no ``pmset``; the rented GPU box is not gated here.
     """
+    if text is None and platform.system() != "Darwin":
+        return
     if text is None:
         text = pmset_batt()
     if not reports_ac_power(text):
