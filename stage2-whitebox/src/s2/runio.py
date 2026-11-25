@@ -117,10 +117,10 @@ def manifest_fields(**extra: Any) -> dict[str, Any]:
     return payload
 
 
-def write_manifest(directory: str | Path, **extra: Any) -> Path:
+def write_manifest(directory: str | Path, *, name: str = "manifest.json", **extra: Any) -> Path:
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
-    path = directory / "manifest.json"
+    path = directory / name
     payload = manifest_fields(**extra)
     tmp = path.with_suffix(f".json.tmp.{os.getpid()}")
     tmp.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")

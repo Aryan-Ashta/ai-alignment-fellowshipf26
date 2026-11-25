@@ -36,3 +36,10 @@
 - Passed: every `"0"`…`"99"` is one token. Ids are identical across the five Olmo tokenizers and also match CODI. `space_number_merge` is false; `" 42"` is `[space, 42]`, not one token. No stop.
 - Failed: nothing.
 - Decided: `*` and `×` both absorb the leading space into one token and leave the surrounding ids unchanged (`(17 + 25) * 3 =` vs `×` differ only in the operator id). Plan says use `*` unless that holds, so `tasks.yaml: mul_symbol` will be `×`. `</think>` is not one token (`</` + `think` + `>`); prefill calibration will append the string and measure the first generated token, not assume a single special id.
+
+### P0.6 Gate 0.2 architecture
+
+- Did: loaded `Olmo-3-7B-Think-DPO@7b18bf927b430ff06376fdfa5610eb3b1b6a5c38` in bf16 on MPS (`scripts/00_arch.py`).
+- Passed: 32 layers, d_model 4096, 32 KV heads, intermediate 11008, vocab 100278, untied embeddings, sliding window 4096, `layer_types` = (3× sliding_attention, 1× full_attention)×8, attention `sdpa`. `final_norm` is `Olmo3RMSNorm` with no bias. `lm_head` is `nn.Linear` with no bias. Block norms are `post_attention_layernorm`, `post_feedforward_layernorm`, plus `q_norm`/`k_norm`.
+- Failed: nothing.
+- Decided: final-norm has no bias and the LM head is a plain matrix, so the restricted lens cotangent `g ⊙ w_v` is valid. q_norm/k_norm stay out of the LRP patch, matching jpp.

@@ -1,0 +1,26 @@
+{
+  "code_commit": "e8ebf7df9266c31cd71813a9a776d5d2f909ae19",
+  "device_name": "Mac17,8 mps",
+  "fitting_corpus_sha256": null,
+  "item_file_sha256": null,
+  "lock_file": "uv.lock",
+  "model_id": "allenai/Olmo-3-7B-Think-DPO",
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "peak_memory": null,
+  "pyproject_lock_hash": "3846d0589e8f50a13b939dea50fe19ef407a8dce760bd7c81664a61d1efbf622",
+  "revision": "7b18bf927b430ff06376fdfa5610eb3b1b6a5c38",
+  "script": "00_arch.py",
+  "seeds": null,
+  "thermal_note": {
+    "after": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\n",
+    "before": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\n"
+  },
+  "versions": {
+    "mlx": null,
+    "mlx_lm": "0.32.2",
+    "python": "3.12.13",
+    "torch": "2.13.0",
+    "transformers": "5.14.1"
+  },
+  "wall_time_s": null
+}

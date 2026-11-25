@@ -1,0 +1,164 @@
+# Olmo-3-7B-Think-DPO architecture
+
+- repo `allenai/Olmo-3-7B-Think-DPO` revision `7b18bf927b430ff06376fdfa5610eb3b1b6a5c38`
+- dtype torch.bfloat16 device mps:0
+- layers 32 (expect 32)
+- d_model 4096 (expect 4096)
+- heads 32 kv_heads 32 (expect 32)
+- intermediate 11008 (expect 11008)
+- vocab 100278 (expect 100278)
+- tie_word_embeddings False (expect false)
+- sliding_window 4096 (expect 4096)
+- attn_implementation sdpa
+- layer_types ['sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention', 'sliding_attention', 'sliding_attention', 'sliding_attention', 'full_attention']
+- final_norm class `Olmo3RMSNorm` bias=False
+- lm_head class `Linear` bias=False
+
+## Block 0 module tree
+
+- `self_attn` Olmo3Attention
+  - `self_attn.q_proj` Linear Linear in=4096 out=4096 bias=False
+  - `self_attn.k_proj` Linear Linear in=4096 out=4096 bias=False
+  - `self_attn.v_proj` Linear Linear in=4096 out=4096 bias=False
+  - `self_attn.o_proj` Linear Linear in=4096 out=4096 bias=False
+  - `self_attn.q_norm` Olmo3RMSNorm weight=(4096,) bias=False
+  - `self_attn.k_norm` Olmo3RMSNorm weight=(4096,) bias=False
+- `mlp` Olmo3MLP
+  - `mlp.gate_proj` Linear Linear in=4096 out=11008 bias=False
+  - `mlp.up_proj` Linear Linear in=4096 out=11008 bias=False
+  - `mlp.down_proj` Linear Linear in=11008 out=4096 bias=False
+  - `mlp.act_fn` SiLUActivation
+- `post_attention_layernorm` Olmo3RMSNorm weight=(4096,) bias=False
+- `post_feedforward_layernorm` Olmo3RMSNorm weight=(4096,) bias=False
+
+## Norm modules
+
+- `model.layers.0.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.0.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.0.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.0.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.1.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.1.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.1.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.1.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.2.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.2.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.2.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.2.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.3.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.3.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.3.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.3.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.4.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.4.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.4.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.4.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.5.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.5.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.5.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.5.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.6.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.6.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.6.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.6.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.7.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.7.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.7.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.7.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.8.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.8.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.8.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.8.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.9.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.9.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.9.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.9.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.10.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.10.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.10.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.10.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.11.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.11.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.11.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.11.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.12.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.12.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.12.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.12.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.13.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.13.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.13.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.13.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.14.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.14.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.14.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.14.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.15.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.15.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.15.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.15.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.16.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.16.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.16.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.16.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.17.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.17.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.17.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.17.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.18.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.18.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.18.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.18.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.19.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.19.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.19.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.19.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.20.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.20.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.20.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.20.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.21.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.21.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.21.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.21.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.22.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.22.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.22.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.22.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.23.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.23.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.23.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.23.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.24.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.24.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.24.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.24.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.25.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.25.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.25.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.25.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.26.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.26.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.26.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.26.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.27.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.27.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.27.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.27.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.28.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.28.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.28.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.28.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.29.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.29.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.29.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.29.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.30.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.30.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.30.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.30.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.31.self_attn.q_norm` Olmo3RMSNorm bias=False
+- `model.layers.31.self_attn.k_norm` Olmo3RMSNorm bias=False
+- `model.layers.31.post_attention_layernorm` Olmo3RMSNorm bias=False
+- `model.layers.31.post_feedforward_layernorm` Olmo3RMSNorm bias=False
+- `model.norm` Olmo3RMSNorm bias=False
