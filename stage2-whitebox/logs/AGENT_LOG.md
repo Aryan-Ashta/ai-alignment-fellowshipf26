@@ -120,3 +120,17 @@
 - Passed: the AC check let it start. Candidates file is `lenses/olmo3/candidates.json`.
 - Failed: nothing yet. The job is still running.
 - Decided: 32 prompts first, then the 16-prompt cosine check, before committing to 64.
+
+### P3 fit resume
+
+- Did: the 32-prompt DPO fit ran 29 prompts, then prompt index 29 encoded to 123 tokens and the script exited.
+- Passed: accumulator `next_prompt` is 29 and its commit matches `d91054d`.
+- Failed: a 600-character WikiText record can still be under 128 tokens.
+- Decided: skip those records and resume. Do not commit until the resume has saved, so the commit stamp still matches.
+
+### P3 32-prompt DPO fit
+
+- Did: resumed from prompt 29 and finished all 32.
+- Passed: `scripts/33_check_fit.py` reports readout `(985, 31, 4096)` and swap `(110, 31, 4096)`, matching `candidates.json`.
+- Failed: nothing in the resumed run.
+- Decided: keep this file. The 16-prompt cosine check writes to a tagged subdirectory so it cannot divide the 32-prompt sum by 16.

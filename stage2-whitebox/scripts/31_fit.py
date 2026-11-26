@@ -24,8 +24,14 @@ from s2.models import load  # noqa: E402
 from s2.runio import atomic_torch_save, code_commit, require_ac_power  # noqa: E402
 
 
-def corpus(n: int) -> list[str]:
-    return wikitext_long(n)
+def corpus(model, n: int) -> list[str]:
+    texts = []
+    for text in wikitext_long(n * 2):
+        if model.encode_fit(text).shape[1] == 128:
+            texts.append(text)
+        if len(texts) == n:
+            return texts
+    raise SystemExit(f"only {len(texts)} WikiText records encoded to 128 tokens, need {n}")
 
 
 def main() -> None:
@@ -35,6 +41,7 @@ def main() -> None:
     parser.add_argument("--device", default="mps")
     parser.add_argument("--prompts", type=int, default=64)
     parser.add_argument("--rows-per-pass", type=int, default=8)
+    parser.add_argument("--tag", default="", help="subdirectory, so a 16-prompt fit does not reuse the 32-prompt accumulator")
     args = parser.parse_args()
     require_ac_power()
     key = f"{args.model}.{args.ckpt}"
@@ -52,8 +59,8 @@ def main() -> None:
         ],
         dim=0,
     )
-    texts = corpus(args.prompts)
-    out = ROOT / "lenses" / key
+    texts = corpus(model, args.prompts)
+    out = ROOT / "lenses" / key / args.tag if args.tag else ROOT / "lenses" / key
     out.mkdir(parents=True, exist_ok=True)
     ckpt = out / "fit_accum.pt"
     start = 0

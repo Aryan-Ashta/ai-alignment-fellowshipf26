@@ -65,7 +65,7 @@ def main() -> None:
             with model.replace({layer: edit}):
                 logits = model.hf(input_ids=input_ids).logits[0, -1]
             top = int(logits.argmax())
-            rows.append({"item_id": item.item_id, "k": int(item.k), "layer": layer, "kind": "src", "success": top == yb_id, "top": top, "y": y_id, "yb": yb_id})
+            rows.append({"item_id": item.item_id, "k": int(item.k), "layer": layer, "scale": 1.0, "variant": "src", "success": top == yb_id, "top": top, "y": y_id, "yb": yb_id})
             if ctrl is None:
                 continue
             ctrl_h = capture_last4(model, ctrl, prefill, layer)
@@ -75,8 +75,8 @@ def main() -> None:
                 return out
             with model.replace({layer: edit_ctrl}):
                 top_c = int(model.hf(input_ids=input_ids).logits[0, -1].argmax())
-            rows.append({"item_id": item.item_id, "k": int(item.k), "layer": layer, "kind": "ctrl", "success": top_c != y_id, "top": top_c, "y": y_id, "yb": yb_id})
-    out = ROOT / "results" / f"{args.model}.{args.ckpt}" / "patching.parquet"
+            rows.append({"item_id": item.item_id, "k": int(item.k), "layer": layer, "scale": 1.0, "variant": "ctrl", "success": top_c != y_id, "top": top_c, "y": y_id, "yb": yb_id})
+    out = ROOT / "results" / f"{args.model}.{args.ckpt}" / "patch.parquet"
     out.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_parquet(out, index=False)
     print(f"wrote {out} rows={len(rows)}")

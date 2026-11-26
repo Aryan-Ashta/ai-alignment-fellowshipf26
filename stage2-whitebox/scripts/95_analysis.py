@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from s2.analysis.bootstrap import accuracy_table  # noqa: E402
 from s2.analysis.cot_table import cot_accuracy  # noqa: E402
 from s2.analysis.curves import mean_curve  # noqa: E402
+from s2.analysis.readability import readability_curve  # noqa: E402
 from s2.analysis.depth import Thresholds  # noqa: E402
 from s2.analysis.plots import plot_depth  # noqa: E402
 from s2.analysis.tables import depth_table  # noqa: E402
@@ -29,6 +30,14 @@ def main() -> None:
             if nocot.is_file():
                 accuracy_table(pd.read_parquet(nocot), out / f"accuracy_{family}.{slot}.csv")
                 wrote_accuracy = True
+            readouts = ROOT / "results" / f"{family}.{slot}" / "readouts.parquet"
+            if readouts.is_file():
+                frame = pd.read_parquet(readouts)
+                if "hit" not in frame.columns and "rank_num" in frame.columns:
+                    frame = frame.assign(hit=frame["rank_num"] == 0)
+                if "hit" in frame.columns:
+                    readability_curve(frame, out / f"readability_{family}.{slot}.csv")
+                    wrote_accuracy = True
             root = ROOT / "results" / f"{family}.{slot}"
             for name in ("swaps", "patch"):
                 path = root / f"{name}.parquet"
