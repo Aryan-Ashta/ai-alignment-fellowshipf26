@@ -134,3 +134,10 @@
 - Passed: `scripts/33_check_fit.py` reports readout `(985, 31, 4096)` and swap `(110, 31, 4096)`, matching `candidates.json`.
 - Failed: nothing in the resumed run.
 - Decided: keep this file. The 16-prompt cosine check writes to a tagged subdirectory so it cannot divide the 32-prompt sum by 16.
+
+### P3 Gate 3 convergence
+
+- Did: fitted 16 prompts into `lenses/olmo3_7b.dpo/p16/` and compared readout rows with the 32-prompt lens.
+- Passed: both tensors match the candidate shape.
+- Failed: minimum cosine is 0.7851. Median is 0.9788. 21553 of 30535 rows are below 0.99. Early layers are worse (layer 2 min 0.7851); layer 30 min is 0.9989.
+- Decided: stop. The plan says a failed 16-vs-32 check means the prompt count is too small, and not to silently move to 64. Waiting on Aryan before another fit or before readout.
