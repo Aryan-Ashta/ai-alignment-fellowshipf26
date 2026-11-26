@@ -141,3 +141,10 @@
 - Passed: both tensors match the candidate shape.
 - Failed: minimum cosine is 0.7851. Median is 0.9788. 21553 of 30535 rows are below 0.99. Early layers are worse (layer 2 min 0.7851); layer 30 min is 0.9989.
 - Decided: stop. The plan says a failed 16-vs-32 check means the prompt count is too small, and not to silently move to 64. Waiting on Aryan before another fit or before readout.
+
+### Stop
+
+- Did: asked Aryan. He said stop, write `findings.md`, and write `handoff.md`.
+- Passed: nothing new.
+- Failed: Gate 3 stands.
+- Decided: no 64-prompt fit and no readout until that choice is reversed.
